@@ -23,9 +23,7 @@ This portfolio is a reflection of my journey, skills, and the work I'm proud to 
 ## 📁 Features
 
 - ✨ Beautiful responsive design
-- 🌓 Light/Dark mode toggle
 - 💼 Projects gallery
-- 📄 Downloadable resume
 - 🔗 Social media links
 - 📱 Fully mobile-friendly
 
