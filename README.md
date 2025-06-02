@@ -33,8 +33,8 @@ This portfolio is a reflection of my journey, skills, and the work I'm proud to 
 
 ## 📸 Live Demo
 
-👉 [View Live Website](https://your-portfolio-link.com)  
-*(Replace with your actual deployed link)*
+👉 [View Live Website] (https://sameedshah.vercel.app/)  
+
 
 ---
 
