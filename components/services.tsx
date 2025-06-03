@@ -7,32 +7,32 @@ const whatido = [
   {
     title: "Web Development",
     description:
-      "I create beautiful, responsive websites that are optimized for performance and user experience.",
+      "I build fast, responsive, and SEO-friendly websites using Next.js, Tailwind CSS, and TypeScript, ensuring top-tier performance and user satisfaction.",
   },
   {
     title: "UI/UX Design",
     description:
-      "I design intuitive and engaging user interfaces that enhance the user experience across all devices.",
+      "I craft intuitive, mobile-first interfaces that offer smooth user journeys, keeping accessibility and engagement in mind.",
   },
   {
     title: "SEO Optimization",
     description:
-      "I optimize websites for search engines to improve visibility and drive organic traffic.",
+      "I enhance your site's visibility on search engines through optimized structure, metadata, and performance tweaks — driving organic traffic that converts.",
   },
   {
     title: "Python Automation",
     description:
-      "I automate repetitive tasks using Python, saving you time and increasing efficiency.",
+      "I develop custom Python scripts to automate repetitive tasks like data entry, scraping, and report generation — boosting your workflow efficiency.",
   },
   {
-    title: "AI Agents",
+    title: "AI Agents (In Progress)",
     description:
-      "I am currently learning about AI agents and how they can be used to enhance user interactions and automate tasks.",
+      "I'm exploring AI agents and their potential to improve automation and user interactions — integrating cutting-edge tools to solve real-world problems.",
   },
   {
     title: "UX Consulting",
     description:
-      "A UX consultant is responsible for many of the same tasks as a UX designer, but they typically...",
+      "I help businesses improve usability and user satisfaction through audits, user research, and data-driven interface improvement.",
   },
 ];
 

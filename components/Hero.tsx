@@ -61,7 +61,7 @@ const Hero = () => {
           </span>
         </h1>
         <p className="text-gray-400 text-base sm:text-lg max-w-xl mb-8 sm:mb-10">
-          As a skilled developer with a passion for scalable digital experiences, I specialize in leveraging cutting-edge technologies and Ai to work on Clients Projects. With expertise in Python (Intermediate Level), Next.js, Tailwind CSS, TypeScript, and headless CMS Beginner, I offer end-to-end web development.
+          A Frontend developer with 1.5 years of hands-on experience crafting high-performance websites using Next.js, Tailwind CSS, and TypeScript. I blend clean design with efficient code to bring ideas to life — and I’m always learning to stay ahead.
         </p>
         <div className="flex flex-wrap gap-6 sm:gap-8 mb-8">
           <div>
@@ -95,6 +95,23 @@ const Hero = () => {
               </Link>
             </div>
           </div>
+        </div>
+        {/* Add buttons below social links */}
+        <div className="flex gap-4">
+          <Link
+           
+            href="#projects"
+            className="bg-cyan-300 text-[#23272f] font-semibold px-6 py-3 rounded-lg shadow hover:bg-cyan-400 transition-colors duration-200"
+          >
+            View my Work
+          </Link>
+          <Link
+            target="_blank"
+            href="https://pk.linkedin.com/in/muhammad-sameed-shah"
+            className="bg-transparent border border-cyan-300 text-cyan-300 font-semibold px-6 py-3 rounded-lg shadow hover:bg-cyan-300 hover:text-[#23272f] transition-colors duration-200"
+          >
+            Let's Connect
+          </Link>
         </div>
       </div>
       {/* Right Side */}

@@ -6,18 +6,18 @@ import Link from "next/link";
 
 const projects = [
     {
-        title: "EvoAcademy School Website",
+        title: " EvoAcademy — School Website",
         description:
-            "A comprehensive frontend-only educational platform.",
+            "A responsive, frontend-only education platform built for course listings and information access.",
         image: "/pr1.webp",
         previewUrl: "https://sameedshah.github.io/evoacademy/index.html",
         codeUrl: "https://github.com/Sameedshah/evoacademy",
         tags: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
     },
     {
-        title: "Vidify Ai SAAS Application",
+        title: "Vidify AI — SaaS Application",
         description:
-            "A fully functional Ai SAAS Application for Image, Video, Music, Code, Audio Generation.",
+            "A full-featured AI-powered app for generating images, videos, music, audio, and code using OpenAI’s APIs.",
         image: "/vidify.jpg",
         previewUrl: "https://vidify-ai.vercel.app/",
         codeUrl: "https://github.com/Sameedshah/vidifyai",
@@ -26,7 +26,7 @@ const projects = [
     {
         title: "Financial Assistant Ai",
         description:
-            "A fully functional Ai Assistant for financial tasks, Data Analysis, Data Visualization.",
+            "An AI assistant for financial planning, data analysis, and interactive visualizations using Claude and Chart.js.",
         image: "/visual.jpg",
         previewUrl: "https://visualai-eight.vercel.app/",
         codeUrl: "https://github.com/Sameedshah/financial-data-analyst",
@@ -35,7 +35,7 @@ const projects = [
     {
         title: "E Commerce Website",
         description:
-            "A fully functional E Commerce Website for online shopping, product listings, and payment processing.",
+            "A modern e-commerce site with product browsing, shopping cart, and Stripe-powered payments.",
         image: "/ecom.webp",
         previewUrl: "",
         codeUrl: "",

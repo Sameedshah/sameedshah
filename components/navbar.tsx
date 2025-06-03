@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { FiDownload } from "react-icons/fi";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -41,7 +42,7 @@ const Navbar = () => {
 
   return (
     <nav className="dark:bg-[#23272f]  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-16 lg:px-26 flex flex-wrap items-center justify-between py-4">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <Link
           href="#home"
@@ -86,20 +87,22 @@ const Navbar = () => {
 
         {/* Hire Me button (hidden on mobile) */}
         <div className="hidden md:flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            onClick={() => handleSmoothScroll("contact")}
-            type="button"
-            className="text-gray-900 bg-cyan-300 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-cyan-400 dark:hover:bg-cyan-400 dark:focus:ring-cyan-800"
+          <Link
+            href="/SAMEEDWEBDEV.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-900 bg-cyan-300 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-cyan-400 dark:hover:bg-cyan-400 dark:focus:ring-cyan-800 transition-colors duration-200"
           >
-            Hire Me
-          </button>
+            <FiDownload className="w-5 h-5" />
+            <span>Resume</span>
+          </Link>
         </div>
 
         {/* Responsive menu */}
         <div
-          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
-            menuOpen ? "flex" : "hidden"
-          }`}
+          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${menuOpen ? "flex" : "hidden"
+            }`}
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-[#23272f] md:dark:bg-[#23272f] dark:border-gray-700">
@@ -112,11 +115,10 @@ const Navbar = () => {
                     e.preventDefault();
                     handleSmoothScroll(item.id);
                   }}
-                  className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 transition-colors duration-200 ${
-                    activeSection === item.id
-                      ? "text-cyan-300 font-bold"
-                      : "text-white hover:text-cyan-300"
-                  }`}
+                  className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 transition-colors duration-200 ${activeSection === item.id
+                    ? "text-cyan-300 font-bold"
+                    : "text-white hover:text-cyan-300"
+                    }`}
                 >
                   {item.label}
                 </Link>
