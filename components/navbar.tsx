@@ -41,8 +41,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="dark:bg-[#23272f]  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 flex flex-wrap items-center justify-between py-4">
+<nav className="dark:bg-[#23272f]  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <Link
           href="#home"
