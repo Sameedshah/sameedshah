@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-[#23272f]  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <nav className="dark:bg-[#23272f]  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-16 lg:px-26 flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <Link
