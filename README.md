@@ -100,32 +100,32 @@ const sameed = {
 <tr>
 <td width="50%">
 
-### 🎙️ Voice Automation System
-![Voice Automation](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
+### 🎬 Vidify AI — SaaS Platform
+![Vidify AI](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
 
-**Urdu Voice → English Email Pipeline**
+**AI-Powered Content Generation Suite**
 
-🔹 Whisper API for transcription  
-🔹 GPT-4 for translation & formatting  
-🔹 n8n for Gmail integration  
-🔹 Real-time processing
+🔹 Image, Video, Music & Code generation  
+🔹 OpenAI APIs integration  
+🔹 Clerk authentication  
+🔹 Next.js + TypeScript + Tailwind
 
-[🔗 View Project](https://github.com/yourusername/voice-automation)
+[🔗 View Project](https://github.com/Sameedshah/vidifyai) | [🚀 Live Demo](https://vidify-ai.vercel.app)
 
 </td>
 <td width="50%">
 
-### ⚡ AI Task Manager
-![AI Task Manager](https://img.shields.io/badge/Status-Active-blue?style=for-the-badge)
+### 💪 Gym Management System
+![Gym System](https://img.shields.io/badge/Status-Client_Project-blue?style=for-the-badge)
 
-**Smart To-Do with Auto-Prioritization**
+**Complete Gym Operations Platform**
 
-🔹 Next.js 14 + Supabase  
-🔹 OpenAI SDK integration  
-🔹 Real-time task rewriting  
-🔹 Intelligent scheduling
+🔹 Member & payment management  
+🔹 Auto-expiry & fee reminders  
+🔹 Real-time check-ins with Hikvision  
+🔹 PostgreSQL (Supabase) backend
 
-[🔗 View Project](https://github.com/yourusername/ai-task-manager)
+[🔗 View Project](https://github.com/Sameedshah/gym-management-dashboard)
 
 </td>
 </tr>
@@ -133,32 +133,32 @@ const sameed = {
 <tr>
 <td width="50%">
 
-### 🌐 Automation Dashboard
-![Dashboard](https://img.shields.io/badge/Status-Production-brightgreen?style=for-the-badge)
+### 📊 Financial Data Analyst AI
+![Financial AI](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 
-**Visual Workflow Builder**
+**AI-Powered Market Analysis Tool**
 
-🔹 n8n + Next.js integration  
-🔹 Real-time webhook monitoring  
-🔹 API orchestration hub  
-🔹 Custom workflow templates
+🔹 Market metrics analysis  
+🔹 Visual statistics & charts  
+🔹 Predictive analytics  
+🔹 Real-time data visualization
 
-[🔗 View Project](https://github.com/yourusername/automation-dashboard)
+[🔗 View Project](https://github.com/Sameedshah/financial-data-analyst) | [🚀 Live Demo](https://visualai-eight.vercel.app)
 
 </td>
 <td width="50%">
 
-### 🧠 Multi-Agent Chat
-![Multi-Agent](https://img.shields.io/badge/Status-Beta-orange?style=for-the-badge)
+### 🎯 Lead Generation SaaS
+![Lead Gen](https://img.shields.io/badge/Status-In_Progress-orange?style=for-the-badge)
 
-**Collaborative AI System**
+**AI-Powered Lead Scraping Platform**
 
-🔹 Multiple specialized agents  
-🔹 Task decomposition & routing  
-🔹 Agent memory & context  
-🔹 Built with OpenAI SDK
+🔹 Google Maps & Search scraping  
+🔹 Multi-country support  
+🔹 n8n automation workflows  
+🔹 LLM-powered data enrichment
 
-[🔗 View Project](https://github.com/yourusername/multi-agent-chat)
+[🔗 View Project](https://github.com/Sameedshah/lead-generation-saas) 
 
 </td>
 </tr>
