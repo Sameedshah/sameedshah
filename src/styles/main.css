@@ -1,0 +1,1070 @@
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.header {
+  display: flex;
+  max-width: var(--cMaxWidth);
+  width: var(--cWidth);
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 9999;
+}
+.navbar-title { font-weight: 700; font-size: 13px; letter-spacing: 0.2px; }
+.navbar-connect {
+  position: absolute;
+  display: none;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+.header ul {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  margin: 0; padding: 0;
+  list-style: none;
+  column-gap: 20px;
+  row-gap: 6px;
+  align-items: end;
+}
+.header ul li { letter-spacing: 0.8px; color: #ccc; font-weight: 600; cursor: pointer; }
+
+/* The two-line hover swap: the label slides up, a duplicate rides in beneath. */
+.hover-link { position: relative; display: flex; text-wrap: nowrap; overflow: hidden; }
+.hover-in { position: relative; transition: 0.3s; }
+.hover-in div { display: flex; position: absolute; top: 100%; left: 0; }
+.hover-link:hover .hover-in { transform: translateY(-100%); color: var(--accent); }
+
+.nav-fade {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 130px;
+  background-image: linear-gradient(0deg, transparent, var(--bg) 70%);
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0;
+}
+
+@media only screen and (min-width: 500px) {
+  .header { padding: 20px 0; }
+  .header ul { flex-direction: row; align-items: center; font-size: 14px; }
+  .header ul li { color: var(--text); }
+  .navbar-title { font-size: 16px; }
+}
+@media only screen and (min-width: 900px) { .navbar-connect { display: block; } }
+@media only screen and (min-width: 1200px) {
+  .header { padding: 35px 0; }
+  .header ul { column-gap: 80px; font-size: 16px; }
+  .navbar-connect, .navbar-title { font-size: 16px; }
+  .navbar-title { font-size: 18px; }
+}
+
+/* ==========================================================================
+   CURSOR
+   mix-blend-mode:difference is what makes one dot readable over both the
+   near-black page and the white project cards.
+   ========================================================================== */
+.cursor-main {
+  --size: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--size); height: var(--size);
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0;
+  background-color: #c3dcff;
+  box-shadow: 0 0 30px #83aaff;
+  mix-blend-mode: difference;
+  will-change: transform;
+  /* Position is lerped in JS and written to transform — only the size and
+     fade are left to CSS. Transitioning top/left here is what made the dot
+     stutter behind the pointer. */
+  transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease;
+}
+.cursor-disable { --size: 0px !important; }
+@media only screen and (min-width: 600px) { .cursor-main { --size: 50px; } }
+
+/* ==========================================================================
+   SOCIAL RAIL + RESUME
+   ========================================================================== */
+.icons-section {
+  position: fixed;
+  max-width: var(--cMaxWidth);
+  width: var(--cWidth);
+  bottom: 0;
+  z-index: 99;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+.social-icons {
+  position: absolute;
+  left: -20px; bottom: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 999;
+  padding: 10px;
+}
+.social-icons span { width: 50px; height: 50px; position: relative; display: flex; }
+.social-icons a {
+  --siLeft: 50%; --siTop: 50%;
+  position: absolute;
+  left: var(--siLeft); top: var(--siTop);
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-size: 23px;
+  will-change: left, top;
+  transition: transform 0.3s ease-out;
+}
+.resume-button {
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  gap: 5px;
+  bottom: 40px; right: 0;
+  text-wrap: nowrap;
+  letter-spacing: 4px;
+  font-size: 15px; line-height: 15px;
+  font-weight: 600;
+  color: #5e5e5e;
+  cursor: pointer;
+  transition: 0.5s;
+  transform-origin: left bottom;
+  transform: translateX(100%) rotate(-90deg);
+}
+.resume-button:hover { color: #fff; }
+.resume-button span { color: #fff; font-size: 17px; display: flex; align-items: center; }
+@media only screen and (min-width: 768px) {
+  .resume-button { transform: none; font-size: 20px; line-height: 20px; }
+  .resume-button span { font-size: 23px; }
+}
+@media only screen and (min-width: 900px) {
+  .social-icons { display: flex; gap: 20px; }
+  .social-icons a { font-size: 28px; }
+}
+
+/* ==========================================================================
+   LANDING
+   ========================================================================== */
+.landing-section {
+  width: 100%;
+  max-width: var(--cMaxWidth);
+  margin: auto;
+  position: relative;
+  height: var(--vh);
+}
+.landing-container {
+  width: var(--cWidth);
+  margin: auto;
+  height: 100%;
+  position: relative;
+  max-width: var(--cMaxWidth);
+}
+
+/* Fixed corner orbs — they bleed in from off-screen and rotate forever. */
+.landing-circle1 {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 15;
+  width: 300px; height: 300px;
+  background-color: var(--glow-pink);
+  box-shadow: inset -50px 40px 50px var(--glow-indigo);
+  filter: blur(60px);
+  border-radius: 50%;
+  animation: loadingCircle 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes loadingCircle {
+  0%   { transform: translate(-95%, -75%) rotate(0deg) }
+  100% { transform: translate(-95%, -75%) rotate(360deg) }
+}
+.landing-circle2 {
+  position: fixed;
+  top: 50%; right: 0;
+  z-index: 9;
+  display: none;
+  width: 300px; height: 300px;
+  background-color: var(--glow-pink);
+  box-shadow: inset -50px 40px 50px var(--glow-indigo);
+  filter: blur(50px);
+  border-radius: 50%;
+  animation: loadingCircle2 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes loadingCircle2 {
+  0%   { transform: translate(calc(100% - 2px), -50%) rotate(0deg) }
+  100% { transform: translate(calc(100% - 2px), -50%) rotate(360deg) }
+}
+@media screen and (min-width: 500px) { .landing-circle2 { display: block; } }
+
+.landing-intro { position: absolute; z-index: 9; top: 5%; left: 0; }
+.landing-intro h2 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.landing-intro h1 {
+  margin: 0;
+  letter-spacing: 2px;
+  font-size: 28px; line-height: 28px;
+  font-weight: 500;
+}
+
+.landing-info {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 40px;
+  z-index: 9;
+}
+.landing-info h3 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: var(--accent);
+  margin: 0;
+}
+/* The role carousel. Two stacked lines swap forever; initialFX.js drives them
+   and recycles the one that just left into the next role. */
+.landing-info-h2 {
+  color: #81b0ff;
+  font-size: 36px;
+  width: 150%;
+  font-weight: 600;
+  position: relative;
+  margin: 0 0 0 -5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* The clip window for the carousel. Letters translate +-115% and get cut off
+     at the top and bottom of this box — cleaner than fading them out under a
+     gradient, which dimmed whichever characters sat low in the line.
+
+     clip-path, not overflow:hidden. This box is only as wide as the "I'm"
+     above it, so overflow:hidden cropped the role down to its first two
+     letters. inset(0 -100vw) clips vertically while leaving the line free to
+     run off the right edge, which is the intended look. */
+  height: 1.3em;
+  overflow: visible;
+  clip-path: inset(0 -100vw 0 -100vw);
+
+  /* Sized in vw so the longest role always fits the space between where this
+     line starts and the right edge, at any window width. The cap stops it
+     ballooning on very wide monitors. A ~21-character role needs roughly
+     13em + letter-spacing, which is what the vw factors below are derived
+     from — lengthen the roles in config.js much past that and it will clip. */
+  font-size: min(34px, 4.6vw);
+}
+.landing-h2-1, .landing-h2-2 {
+  position: absolute;
+  top: 0; left: 0;
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1.25em;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+.role-char { display: inline-block; will-change: transform; }
+
+@media screen and (min-width: 500px) {
+  .landing-intro h2, .landing-info h3 { font-size: 18px; }
+  .landing-intro h1 { font-size: 30px; line-height: 30px; }
+  .landing-info-h2 { font-size: min(34px, 4.6vw); }
+}
+@media screen and (min-width: 768px) {
+  .landing-intro h2 { font-size: 25px; }
+  .landing-intro h1 { font-size: 40px; line-height: 38px; }
+  .landing-info h3 { font-size: 25px; }
+  .landing-info-h2 { font-size: min(46px, 4.4vw); }
+}
+@media screen and (min-width: 1025px) {
+  .landing-intro { top: 40%; left: auto; right: 66%; transform: translateY(-50%); }
+  .landing-info  { bottom: auto; top: 51%; transform: translateY(-50%); right: auto; left: 58%; text-align: left; }
+  .landing-info-h2 { font-size: min(48px, 2.8vw); }
+}
+@media screen and (min-width: 1200px) {
+  .landing-intro { right: 70%; }
+  .landing-info  { left: 60%; }
+}
+@media screen and (min-width: 1600px) {
+  .landing-intro h2 { font-size: 35px; }
+  .landing-intro h1 { font-size: 60px; line-height: 58px; }
+  .landing-info h3 { font-size: 35px; }
+  .landing-info-h2 { font-size: min(48px, 2.8vw); }
+}
+
+/* ==========================================================================
+   3D CHARACTER
+   ========================================================================== */
+.character-model {
+  height: 80vh;
+  position: absolute;
+  max-width: 1920px; max-height: 1080px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  z-index: 0;
+  pointer-events: none;
+}
+.character-model canvas { position: relative; z-index: 2; }
+/* Once the model has scrolled past its range, take the fixed canvas out of
+   the way of everything below it. */
+.character-model { transition: opacity 0.5s ease; }
+.character-gone { opacity: 0; pointer-events: none; }
+/* Feathers the model into the page instead of ending on a hard canvas edge. */
+.character-model::after {
+  content: '';
+  width: 100vw; height: 250px;
+  background-image: linear-gradient(to bottom, transparent, var(--bg) 70%);
+  bottom: -50px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  position: absolute;
+  pointer-events: none;
+}
+.character-rim {
+  position: absolute;
+  width: 400px; height: 400px;
+  z-index: 1;
+  background-color: #9bcdf8;
+  box-shadow: inset 66px 35px 85px #0044ffa6;
+  filter: blur(50px);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, 100%) scale(1.4);
+  opacity: 0;
+}
+.character-loaded .character-rim { animation: backlight 3s forwards; animation-delay: 0.3s; }
+@keyframes backlight {
+  0%   { transform: translate(-50%, 100%) scale(1.4); opacity: 0 }
+  100% { transform: translate(-50%, 36%) scaleX(1.4); opacity: 0.85 }
+}
+@media screen and (min-width: 1025px) {
+  .character-model { height: 100vh; bottom: 0; z-index: 11; position: fixed; }
+  .character-model::after { display: none; }
+}
+@media only screen and (max-width: 768px) { .character-model { display: none !important; } }
+
+/* mobile fallback portrait */
+.mobile-photo { display: none; }
+@media only screen and (max-width: 768px) {
+  .landing-section, .landing-container {
+    height: auto !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 40px;
+  }
+  .landing-intro {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    padding-top: 90px;
+    text-align: center;
+    width: 100% !important;
+    order: 1;
+  }
+  .landing-intro h1 { font-size: 32px !important; line-height: 1.2 !important; }
+  .landing-info {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    text-align: center;
+    order: 3;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .landing-info h3 { display: none; }
+  .landing-info-h2 { font-size: 22px !important; width: auto; height: auto; clip-path: none; }
+  .landing-h2-1, .landing-h2-2 { position: static !important; white-space: normal; }
+  .landing-h2-2 { display: none; }
+  .mobile-photo {
+    display: block;
+    order: 2;
+    width: 100%;
+    max-width: 340px;
+    margin: 20px auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #7fb2ff55, transparent 70%);
+    filter: blur(2px);
+  }
+}
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+  height: auto;
+  width: var(--cWidth);
+  margin: auto;
+}
+.about-me { padding: 40px 0 0; width: 100%; }
+.about-me h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+.about-me p {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+}
+.about-me .split-word { display: inline-block; margin-right: 0.3em; }
+.about-me .split-line { display: block; }
+
+@media only screen and (min-width: 600px) {
+  .about-section { justify-content: center; }
+  .about-me { width: 500px; }
+  .about-me h3 { font-size: 22px; letter-spacing: 6px; }
+  .about-me p { font-size: 28px; line-height: 32px; }
+}
+@media only screen and (min-width: 768px) {
+  .about-me h3 { font-size: 25px; letter-spacing: 7px; }
+  .about-me p { font-size: 33px; line-height: 36px; }
+}
+/* On desktop the copy sits right of the pinned character. */
+@media only screen and (min-width: 1025px) {
+  .about-section { justify-content: right; max-width: 1920px; height: var(--vh); padding: 0; }
+  .about-me { padding: 0; width: 50%; }
+  .about-me p { font-size: 1.9vw; line-height: 2.3vw; }
+}
+@media only screen and (min-width: 1950px) {
+  .about-me p { font-size: 2.5rem; line-height: 2.7rem; }
+}
+
+/* ==========================================================================
+   WHAT I DO — HUD accordion
+   ========================================================================== */
+.whatIDO {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  width: var(--cWidth);
+  max-width: 1920px;
+  margin: auto;
+  z-index: 9;
+}
+.what-box { width: 50%; display: flex; justify-content: center; position: relative; z-index: 9; }
+.what-box h2 {
+  font-size: calc(4vw + 25px);
+  line-height: calc(4vw + 20px);
+  font-weight: 600;
+  margin-right: 10%;
+  margin-bottom: 100px;
+}
+.hat-h2 { font-style: italic; }
+.do-h2 { color: var(--accent); }
+
+.what-box-in {
+  flex-direction: column;
+  height: 600px;
+  margin-left: 200px;
+  position: relative;
+  display: flex;
+}
+
+/* The accordion.
+   Driven by the .what-content-active class from React, not by :hover.
+   Hover-to-expand and click-to-expand fought each other: hovering a panel
+   already opened it, so pressing its chevron looked like it did nothing, and
+   the panel snapped shut again the moment the pointer left.
+
+   Sizes are explicit max-heights rather than percentages so the open panel is
+   guaranteed to fit its heading, copy, and the full tag list — the percentage
+   version cut the tags off the bottom. */
+.what-content {
+  width: 450px;
+  max-height: 170px;
+  transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1), padding 0.55s;
+  position: relative;
+  padding: 30px 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.what-content-active { max-height: 420px; padding: 30px 50px; }
+.what-content.what-sibling { max-height: 170px; padding: 20px 50px; }
+
+.what-content h3 { font-size: 35px; letter-spacing: 1px; margin: 0; }
+.what-content h4 { font-weight: 300; letter-spacing: 1px; margin: 0; font-size: 14px; opacity: 0.3; }
+.what-content p { font-size: 14px; line-height: 18px; font-weight: 200; letter-spacing: 0.7px; }
+.what-content-in {
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  animation: whatFlicker 0.5s 1 forwards;
+  animation-delay: 1s;
+  /* Collapsed panels cut the description mid-sentence. Feathering the last few
+     lines makes that read as "there's more here" instead of broken text. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+.what-content-active .what-content-in {
+  -webkit-mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
+}
+.what-content-in h5 {
+  font-weight: 300;
+  opacity: 0.5;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+/* CRT-boot stutter */
+@keyframes whatFlicker {
+  0%, 25%, 35%, 60% { opacity: 0 }
+  30%, 40%, 50%, 100% { opacity: 1 }
+}
+
+/* corner brackets */
+.what-content::before, .what-corner::before,
+.what-content::after,  .what-corner::after {
+  content: '';
+  width: 10px; height: 10px;
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 0;
+  animation: whatCorners 0.2s 1 forwards;
+  animation-delay: 0.5s;
+}
+@keyframes whatCorners { to { opacity: 1 } }
+.what-content::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.what-corner::before  { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.what-content::after  { bottom: -2px; left: -2px; border-top: none; border-right: none; }
+.what-corner::after   { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* A real button now, so reset the UA styling. */
+.what-arrow {
+  position: absolute;
+  bottom: 20px; right: 20px;
+  width: 25px; height: 25px;
+  border: 1px solid #fff;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+.what-arrow:hover { background: #ffffff1f; border-color: var(--accent); }
+.what-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.what-arrow::before {
+  content: '';
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transition: 0.5s;
+  width: 10px; height: 10px;
+}
+.what-content-active .what-arrow::before { transform: translate(-50%, -20%) rotate(-225deg); }
+
+/* animated dashed borders that draw themselves open */
+.what-border1, .what-border2 {
+  position: absolute;
+  transition: 0.5s;
+  opacity: 0.8;
+  overflow: hidden;
+  animation: whatBorders 1.2s 1 forwards;
+  pointer-events: none;
+}
+.what-border1 { top: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 100%; max-width: 0%; }
+.what-border2 { top: 50%; left: 0; transform: translateY(-50%); width: 100%; height: 100%; max-height: 0%; }
+.what-border1 svg { position: absolute; left: 50%; transform: translateX(-50%); width: 450px; }
+.what-border2 svg { position: absolute; top: 50%; transform: translateY(-50%); height: 600px; }
+@keyframes whatBorders {
+  80%  { opacity: 0.8 }
+  100% { max-height: 100%; max-width: 100%; opacity: 0.2 }
+}
+
+.what-content-flex { display: flex; gap: 5px; flex-wrap: wrap; }
+.what-tags {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 2px 7px;
+  background-color: #ffffff26;
+  border: 1px solid #ffffff50;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 1600px) { .what-box h2 { margin-right: 18%; } }
+@media only screen and (max-width: 1400px) {
+  .what-box h2 { margin-right: 20%; }
+  .what-box-in { height: 540px; margin-left: 50px; }
+  .what-content { padding: 24px 30px; width: 380px; max-height: 150px; }
+  .what-content-active { max-height: 380px; padding: 24px 30px; }
+  .what-content.what-sibling { max-height: 150px; padding: 18px 30px; }
+  .what-content h3 { font-size: 28px; }
+  .what-content p { font-size: 13px; }
+  .what-tags { font-size: 12px; }
+  .what-border1 svg { width: 380px; }
+  .what-border2 svg { height: 540px; }
+}
+@media only screen and (max-width: 1024px) {
+  .whatIDO { height: auto; padding: 50px 0; }
+  .what-box-in { height: 580px; margin-left: -50px; }
+  .what-content { padding: 30px 40px; width: 500px; }
+  .what-border1 svg { width: 500px; }
+  .what-border2 svg { height: 580px; }
+}
+@media only screen and (max-width: 900px) {
+  .whatIDO { flex-direction: column; }
+  .what-box h2 { margin: 50px 0; font-size: 55px; line-height: 53px; }
+  .what-box:first-child { justify-content: left; }
+  .what-box:last-child { height: 500px; }
+  .what-box { width: 500px; max-width: calc(100% - 50px); margin: auto; }
+  .what-content { width: 100%; padding: 24px; max-height: 130px; }
+  .what-content-active { max-height: 400px; padding: 24px; }
+  .what-content.what-sibling { max-height: 130px; padding: 18px 24px; }
+  .what-box-in { margin-left: 0; height: 560px; width: 100%; }
+  .what-border1 svg { width: 100%; }
+  .what-border2 svg { height: 560px; }
+  .what-content h3 { font-size: 25px; }
+  .what-content p { font-size: 12px; }
+  .what-tags { font-size: 11px; }
+}
+@media only screen and (min-width: 1950px) { .what-box h2 { font-size: 7rem; line-height: 6.8rem; } }
+
+/* ==========================================================================
+   CAREER
+   ========================================================================== */
+.career-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: auto;
+  margin: auto auto 250px;
+  padding: 120px 0;
+}
+.career-section h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(0deg, var(--accent-deep), #fff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 50px 0 90px;
+}
+.career-section h2 > span { font-weight: 300; }
+.career-info { position: relative; display: flex; flex-direction: column; margin: 0 auto; }
+.career-info-box { display: flex; justify-content: space-between; margin-bottom: 50px; }
+.career-info-box p { width: 40%; font-size: 14px; font-weight: 300; margin: 0; line-height: 20px; }
+.career-info-in { display: flex; width: 40%; justify-content: space-between; gap: 50px; }
+.career-info h3 { font-size: 48px; margin: 0; font-weight: 500; line-height: 45px; }
+.career-info h4 { font-size: 33px; line-height: 30px; letter-spacing: 0.8px; font-weight: 500; margin: 0; }
+.career-info h5 {
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 10px 0;
+  color: var(--accent);
+}
+
+/* The line grows 0 → 100% on scrub; the dot rides its head. */
+.career-timeline {
+  position: absolute;
+  top: -50px; left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background-image: linear-gradient(to top, var(--accent-hot) 20%, var(--accent) 50%, transparent 95%);
+  max-height: 0%;
+}
+.career-dot {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: var(--accent-hot);
+  width: 10px; height: 10px;
+  border-radius: 50px;
+  animation: timeline 0.8s linear infinite forwards;
+}
+/* three shadow layers = core, halo, and a 110px bloom that lights the section */
+@keyframes timeline {
+  0%, 30%, 64%, 80%, 100% {
+    box-shadow: 0 0 5px 2px #9bc2ff, 0 0 15px 5px #97bdff, 0 0 110px 20px #c0dcff;
+  }
+  10%, 20%, 50%, 70%, 90% { box-shadow: 0 0 5px 2px #9bc2ff; }
+}
+
+@media only screen and (max-width: 1400px) {
+  .career-section h2 { font-size: 50px; line-height: 50px; }
+  .career-info h4 { font-size: 22px; line-height: 24px; width: 180px; }
+  .career-info h5 { font-size: 17px; }
+  .career-info h3 { font-size: 40px; }
+  .career-info-in, .career-info-box p { width: 45%; }
+  .career-info-in { gap: 20px; }
+}
+@media only screen and (max-width: 1025px) { .career-section { padding: 100px 0 70px; margin-bottom: 0; } }
+@media only screen and (max-width: 900px) {
+  .career-info-box { flex-direction: column; gap: 10px; margin-bottom: 70px; }
+  .career-info-in, .career-info-box p { width: 100%; padding-left: 10%; }
+  .career-timeline { left: 0; }
+  .career-container { width: calc(100% - 25px); }
+}
+@media only screen and (max-width: 600px) {
+  .career-info { margin: 0; }
+  .career-section h2 { width: 100%; font-size: 45px; line-height: 45px; margin-top: 0; }
+  .career-info-in { gap: 0; }
+  .career-info h3 { font-size: 33px; }
+  .career-info-in, .career-info-box p { padding-left: 5%; }
+  .career-section { padding-top: 90px; align-items: start; justify-content: left; }
+}
+
+/* ==========================================================================
+   WORK — pinned horizontal scroll
+   ========================================================================== */
+/* overflow:hidden clips the cards that are still off to the right — without it
+   they widen the document and the page gains a horizontal scrollbar. */
+.work-section { height: 100vh; will-change: transform; transition: 0s; overflow: hidden; }
+.work-container { margin: auto; display: flex; flex-direction: column; height: 100%; align-content: stretch; }
+.work-section h2 { margin-top: 100px; font-size: 70px; font-weight: 500; }
+.work-section h2 > span { color: var(--accent); }
+
+.work-flex {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  margin-left: -80px;
+  padding-right: 120px;
+  position: relative;
+}
+/* The rails above and below the card row. Wide enough to stay under the cards
+   for the whole scrub, but bounded — an unbounded width here lands in
+   scrollWidth and wrecks any measurement taken from it. */
+.work-flex::before, .work-flex::after {
+  content: '';
+  width: calc(100% + 300vw); height: 1px;
+  background-color: var(--line);
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+}
+.work-flex::after { top: 100%; }
+
+.work-box {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border-right: 1px solid var(--line);
+  flex-shrink: 0;
+  gap: 50px;
+  justify-content: start;
+}
+/* every other card flips text/image — that zigzag is what stops a horizontal
+   rail from reading as a boring conveyor belt */
+.work-flex .work-box:nth-child(2n) { flex-direction: column-reverse; }
+
+.work-title { justify-content: space-between; display: flex; width: 100%; margin-bottom: 20px; }
+.work-title > div { text-align: right; }
+.work-title h3 { font-size: 50px; line-height: 50px; margin: 0; font-weight: 600; }
+.work-info h4 { font-size: 26px; font-weight: 500; margin: 0; }
+.work-info p { font-weight: 200; color: var(--muted); margin: 3px 0 0; }
+.work-info > p { width: 90%; }
+
+.work-image { display: flex; width: 100%; justify-content: center; }
+.work-image-in { position: relative; }
+.work-image img { max-width: 100%; max-height: 350px; border-radius: 6px; }
+.work-link {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  background-color: var(--bg);
+  width: 50px; height: 50px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 0 10px #ffffff80, inset 0 0 10px #393939;
+  transition: 0.3s;
+  opacity: 0;
+}
+.work-image a:hover .work-link { opacity: 1; }
+
+/* placeholder tile when a project has no screenshot yet */
+.work-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 350px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 30% 30%, #7fb2ff22, transparent 60%),
+    linear-gradient(135deg, #11141a, #0a0c0f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff35;
+}
+
+.work-box-cta { display: flex; align-items: center; justify-content: center; border-right: none; }
+.see-all-works { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.see-all-works h3 { font-size: 32px; font-weight: 500; color: #fff; }
+.see-all-works p { font-size: 16px; color: #fff9; max-width: 250px; }
+.see-all-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  background: var(--accent);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+.see-all-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px #7fb2ff66; color: #000; }
+
+@media only screen and (max-height: 900px) {
+  .work-image img, .work-placeholder { max-height: 250px; }
+  .work-box { padding-top: 40px; padding-bottom: 40px; }
+  .work-section h2 { font-size: 60px; margin: 70px 0 30px; }
+}
+@media only screen and (max-width: 1400px) {
+  .work-title h3 { font-size: 35px; }
+  .work-info p { font-size: 13px; }
+  .work-info h4 { font-size: 15px; }
+  .work-box { width: 420px; padding: 40px; }
+  .work-flex { margin-left: -40px; padding-right: 60px; }
+  .work-section h2 { font-size: 50px; }
+}
+@media only screen and (max-height: 650px) {
+  .work-image img, .work-placeholder { max-height: 200px; }
+  .work-section h2 { font-size: 40px; margin-bottom: 20px; }
+  .work-box { gap: 20px; }
+}
+@media only screen and (max-width: 768px) {
+  .work-section { height: auto; }
+  .work-flex { flex-direction: column; margin-left: 0; padding-right: 0; }
+  .work-box { width: 100%; padding: 30px 15px; border-right: none; border-bottom: 1px solid var(--line); gap: 20px; }
+  .work-flex .work-box:nth-child(2n) { flex-direction: column; }
+  .work-section h2 { font-size: 36px; margin: 50px 0 20px; }
+  .work-title h3 { font-size: 30px; line-height: 30px; }
+  .work-info h4 { font-size: 18px; }
+  .work-box-cta { padding: 40px 20px; border-bottom: none; }
+}
+
+/* ==========================================================================
+   TECH STACK
+   ========================================================================== */
+.techstack-new {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 0;
+}
+/* an animated aurora instead of the reference's video file — same job,
+   no 4MB download */
+.techstack-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, #1e5bff33, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 60%, #7fb2ff26, transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 90%, #3d7bff1f, transparent 70%);
+  animation: aurora 18s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  0%   { transform: scale(1) translateY(0); filter: hue-rotate(0deg) }
+  100% { transform: scale(1.15) translateY(-30px); filter: hue-rotate(25deg) }
+}
+.techstack-bg::before, .techstack-bg::after {
+  content: '';
+  position: absolute;
+  left: 0; width: 100%; height: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+.techstack-bg::before { top: 0; background: linear-gradient(to bottom, var(--bg), transparent); }
+.techstack-bg::after  { bottom: 0; background: linear-gradient(to top, var(--bg), transparent); }
+
+.techstack-content { position: relative; z-index: 2; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.techstack-content h2 {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  background: linear-gradient(180deg, #fff, var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.techstack-pyramid { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.techstack-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.techstack-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 62px; height: 74px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #ffffff08;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.techstack-item:hover {
+  transform: translateY(-6px) scale(1.08);
+  background: #7fb2ff1a;
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px #7fb2ff40;
+}
+/* grey by default so the grid reads as one texture; colour on hover is the
+   whole reward of the interaction */
+.techstack-item img {
+  width: 30px; height: 30px;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(1.2) brightness(1.5);
+  opacity: 0.85;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.techstack-item:hover img { filter: none; opacity: 1; }
+.techstack-item span {
+  font-size: 9px;
+  color: #ffffffb3;
+  margin-top: 5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 54px;
+}
+.techstack-item:hover span { color: #fff; }
+
+@media screen and (max-width: 900px) {
+  .techstack-content h2 { font-size: 50px; margin-bottom: 35px; }
+  .techstack-pyramid, .techstack-row { gap: 8px; }
+  .techstack-item { width: 50px; height: 62px; padding: 6px; }
+  .techstack-item img { width: 24px; height: 24px; }
+  .techstack-item span { font-size: 7px; max-width: 44px; }
+}
+@media screen and (max-width: 600px) {
+  .techstack-content h2 { font-size: 36px; }
+  .techstack-item { width: 44px; height: 54px; padding: 5px; border-radius: 8px; }
+  .techstack-item img { width: 20px; height: 20px; }
+  .techstack-item span { font-size: 6px; max-width: 40px; margin-top: 3px; }
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.cta-section {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+}
+.cta-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+.cta-btn-alt { background: #ffffff14; color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+.cta-btn-alt:hover { background: #ffffff1f; box-shadow: 0 8px 30px #ffffff1a; transform: translateY(-2px); color: #fff; }
+.cta-btn-hire { background: var(--accent); color: #000; border: 1px solid var(--accent); }
+.cta-btn-hire:hover { box-shadow: 0 8px 30px #7fb2ff59; transform: translateY(-2px); color: #000; }
+@media only screen and (max-width: 768px) {
+  .cta-section { padding: 60px 20px; }
+  .cta-buttons { flex-direction: column; gap: 15px; }
+  .cta-btn { justify-content: center; padding: 12px 28px; }
+}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact-section {
+  margin: 0 auto;
+  padding-bottom: 150px;
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+.contact-section h3 { font-size: 32px; font-weight: 400; text-transform: uppercase; margin: 0 0 30px; }
+.contact-flex { display: flex; justify-content: space-between; }
+.contact-flex h4 { font-weight: 500; margin: 0; opacity: 0.6; font-size: 14px; }
+.contact-box { display: flex; flex-direction: column; }
+.contact-flex p { margin: 8px 0 15px; font-size: 14px; }
+a.contact-social { font-size: 16px; border-bottom: 1px solid #ccc; margin-bottom: 8px; width: fit-content; }
+.contact-box h2 { font-weight: 400; font-size: 16px; margin: 0; line-height: 22px; }
+.contact-box h2 > span { color: var(--accent); }
+.contact-box h5 { font-size: 14px; font-weight: 500; line-height: 14px; display: flex; gap: 8px; opacity: 0.5; margin: 0; }
+
+@media only screen and (min-width: 600px) {
+  .contact-section h3 { font-size: 40px; }
+  .contact-box h2, a.contact-social { font-size: 18px; }
+  .contact-flex h4, .contact-flex p { font-size: 15px; }
+}
+@media only screen and (min-width: 900px) {
+  .contact-section h3 { font-size: 48px; }
+  .contact-box h2 { font-size: 20px; }
+  a.contact-social { font-size: 22px; }
+}
+@media only screen and (min-width: 1300px) {
+  .contact-section h3 { font-size: 55px; }
+  a.contact-social { font-size: 24px; }
+}
+@media only screen and (min-width: 1600px) {
+  .contact-section h3 { font-size: 60px; margin-bottom: 40px; }
+  a.contact-social { font-size: 25px; }
+  .contact-box h5 { font-size: 20px; line-height: 20px; }
+}
+@media only screen and (max-width: 900px) {
+  .contact-flex { flex-direction: column; gap: 40px; }
+  .contact-flex p { margin-bottom: 0; }
+  .contact-flex h4 { margin-top: 20px; }
+  .contact-section { margin-top: 50px; padding-bottom: 50px; }
+  .contact-container { width: calc(100% - 25px); }
+}
