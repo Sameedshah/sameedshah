@@ -24,7 +24,7 @@ export const config = {
 
   /* -------------------------------------------------------------- CONTACT */
   contact: {
-    email: 'work.cloudex@gmail.com', // ⚠️ CONFIRM — this goes public
+    email: 'sameedshahdev@gmail.com',
     location: 'Karachi, Pakistan',
     upwork: 'https://www.upwork.com/freelancers/~019cc8aaea2bf997e0',
     github: 'https://github.com/Sameedshah',
